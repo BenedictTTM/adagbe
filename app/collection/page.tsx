@@ -22,7 +22,7 @@ const PRODUCTS = [
         id: "2",
         name: "Zaria Knit Dress",
         price: "€890",
-        image: "https://images.unsplash.com/photo-1529139574466-a3005241e2a3?q=80&w=1887&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1663044023009-cfdb6dd6b89c?q=80&w=707&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description: "Hand-woven cotton blend with intricate patterns. A modern interpretation of traditional weaving techniques, offering comfort and heritage.",
         tag: "DAYWEAR"
     },
@@ -147,7 +147,7 @@ export default function CollectionPage() {
                     const insert = getInsert(index);
 
                     return (
-                        <>
+                        <div key={product.id} className="contents">
                             {/* Render Insert if exists for this index (before the product) */}
                             {insert && (
                                 <div className="md:col-span-4 md:col-start-2 flex items-center justify-center my-12 md:my-0">
@@ -156,7 +156,6 @@ export default function CollectionPage() {
                             )}
 
                             <div
-                                key={product.id}
                                 className={`${colSpan} ${marginTop}`}
                             >
                                 <ProductCard
@@ -164,41 +163,75 @@ export default function CollectionPage() {
                                     onClick={(p) => setSelectedProduct(p)}
                                 />
                             </div>
-                        </>
+                        </div>
                     )
                 })}
             </div>
 
-            {/* Archive Section - Hidden until unlocked */}
-            <div className="mt-40 border-t border-dashed border-white/20 pt-16">
-                <div className="flex flex-col items-center justify-center text-center">
-                    <p className="font-mono text-xs text-muted mb-4 uppercase tracking-widest">[ RESTRICTED AREA ]</p>
+            {/* Categories Section */}
+            <div className="mt-40 border-t border-white/10 pt-16">
+                <div className="flex flex-col gap-12">
+                    <div className="flex flex-col md:flex-row justify-between items-end gap-4">
+                        <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter">
+                            Curated <span className="text-accent">Edits</span>
+                        </h2>
+                        <p className="font-mono text-xs text-muted max-w-sm">
+                            Explore our collections by category. Each piece is a unique narrative of African heritage and modern design.
+                        </p>
+                    </div>
 
-                    {!showArchive ? (
-                        <button
-                            onClick={() => setShowArchive(true)}
-                            className="group relative px-8 py-4 bg-white/5 border border-white/10 text-xl font-bold uppercase tracking-widest hover:bg-accent hover:text-black transition-all duration-500 overflow-hidden"
-                        >
-                            <span className="relative z-10">Access Archive</span>
-                            <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                        </button>
-                    ) : (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            className="w-full mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
-                        >
-                            {[1, 2, 3, 4].map((i) => (
-                                <div key={i} className="aspect-square bg-white/5 border border-white/5 flex items-center justify-center group cursor-not-allowed">
-                                    <span className="font-mono text-xs text-muted group-hover:text-red-500 transition-colors">
-                                        [ FILE_CORRUPTED ]
-                                        <br />
-                                        ARCHIVE_00{i}
-                                    </span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {[
+                            {
+                                title: "Evening",
+                                filter: "EVENING",
+                                image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1983&auto=format&fit=crop"
+                            },
+                            {
+                                title: "Daywear",
+                                filter: "DAYWEAR",
+                                image: "https://images.unsplash.com/photo-1663044023009-cfdb6dd6b89c?q=80&w=707&auto=format&fit=crop"
+                            },
+                            {
+                                title: "Tailoring",
+                                filter: "TAILORING",
+                                image: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?q=80&w=1887&auto=format&fit=crop"
+                            },
+                            {
+                                title: "Conceptual",
+                                filter: "CONCEPTUAL",
+                                image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1934&auto=format&fit=crop"
+                            }
+                        ].map((category, index) => (
+                            <button
+                                key={category.title}
+                                onClick={() => {
+                                    setActiveFilter(category.filter);
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}
+                                className="group relative aspect-[3/4] overflow-hidden bg-white/5 border border-white/10 text-left"
+                            >
+                                <div className="absolute inset-0">
+                                    <img
+                                        src={category.image}
+                                        alt={category.title}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                                 </div>
-                            ))}
-                        </motion.div>
-                    )}
+
+                                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                                    <span className="font-mono text-[10px] text-accent mb-2 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                                        00{index + 1}
+                                    </span>
+                                    <h3 className="text-2xl font-bold uppercase tracking-widest translate-y-0 group-hover:-translate-y-2 transition-transform duration-300">
+                                        {category.title}
+                                    </h3>
+                                    <div className="w-0 group-hover:w-full h-[1px] bg-accent transition-all duration-500 delay-100" />
+                                </div>
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
 

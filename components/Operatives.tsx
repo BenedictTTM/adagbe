@@ -51,7 +51,7 @@ export default function Operatives() {
                         onMouseEnter={() => setHoveredOp(index)}
                         onMouseLeave={() => setHoveredOp(null)}
                     >
-                        <div className="flex items-center gap-8">
+                        <div className="flex items-center gap-4 md:gap-8">
                             <span className="font-mono text-xs text-muted opacity-50 group-hover:text-accent group-hover:opacity-100 transition-all">
                                 {op.id}
                             </span>

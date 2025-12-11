@@ -10,7 +10,7 @@ interface Product {
   price: string;
   image: string;
   description: string;
-  tag?: string;
+  tag: string;
 }
 
 interface ProductCardProps {
