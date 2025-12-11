@@ -87,21 +87,6 @@ export default function CollectionPage() {
                     </div>
                 </div>
             )
-        },
-        {
-            index: 5,
-            content: (
-                <div className="w-full h-full min-h-[300px] bg-accent/5 flex flex-col justify-between p-4 mix-blend-difference">
-                    <span className="font-mono text-[10px] uppercase">Raw_Material_Log.txt</span>
-                    <div className="font-mono text-xs opacity-70 break-all">
-                        0x1A2B3C4D5E6F7G8H9I0J1K2L3M4N5O6P7Q8R9S0T1U2V3W4X5Y6Z
-                        <br />
-                        &gt;&gt; DECRYPTING...
-                        <br />
-                        &gt;&gt; ERROR: ENCRYPTION_TOO_STRONG
-                    </div>
-                </div>
-            )
         }
     ];
 
@@ -111,7 +96,7 @@ export default function CollectionPage() {
         <main className="min-h-screen bg-background text-foreground pt-32 pb-20 px-4 md:px-12 selection:bg-accent selection:text-black">
 
             {/* Terminal Header */}
-            <div className="mb-24 border-b border-border/40 pb-8 flex flex-col md:flex-row justify-between items-end gap-8 bg-background/80 backdrop-blur-sm sticky top-0 z-30 pt-8 mt-[-8rem]">
+            <div className="mb-24 border-b border-border/40 pb-8 flex flex-col md:flex-row justify-between items-end gap-8 bg-background/80 backdrop-blur-sm md:sticky md:top-0 z-30 pt-8 mt-[-8rem]">
                 <div>
                     <span className="font-mono text-xs text-accent mb-2 block animate-pulse">&gt; COLLECTION_003_INIT</span>
                     <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter">
