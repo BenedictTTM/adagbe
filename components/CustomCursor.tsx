@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
+
+const INTERACTIVE_SELECTOR = "a, button, input, textarea, [role='button']";
 
 export default function CustomCursor() {
     const [isHovered, setIsHovered] = useState(false);
@@ -16,58 +18,48 @@ export default function CustomCursor() {
     const cursorY = useSpring(mouseY, springConfig);
 
     useEffect(() => {
+        let hideTimeout: NodeJS.Timeout;
+
         const moveCursor = (e: MouseEvent) => {
             mouseX.set(e.clientX);
             mouseY.set(e.clientY);
             setIsVisible(true);
+
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => setIsVisible(false), 800);
         };
 
         const handleMouseDown = () => setIsHovered(true);
         const handleMouseUp = () => setIsHovered(false);
 
-        // Add hover listeners to interactive elements
-        const handleLinkHover = () => setIsHovered(true);
-        const handleLinkLeave = () => setIsHovered(false);
+        // Event delegation instead of MutationObserver — much cheaper
+        const handleMouseOver = (e: MouseEvent) => {
+            const target = e.target as Element;
+            if (target?.closest?.(INTERACTIVE_SELECTOR)) {
+                setIsHovered(true);
+            }
+        };
 
-        window.addEventListener("mousemove", moveCursor);
+        const handleMouseOut = (e: MouseEvent) => {
+            const target = e.target as Element;
+            if (target?.closest?.(INTERACTIVE_SELECTOR)) {
+                setIsHovered(false);
+            }
+        };
+
+        window.addEventListener("mousemove", moveCursor, { passive: true });
         window.addEventListener("mousedown", handleMouseDown);
         window.addEventListener("mouseup", handleMouseUp);
-
-        // Attach to all links and buttons
-        const links = document.querySelectorAll("a, button, input, textarea, [role='button']");
-        links.forEach((link) => {
-            link.addEventListener("mouseenter", handleLinkHover);
-            link.addEventListener("mouseleave", handleLinkLeave);
-        });
-
-        // Re-attach listeners when DOM changes (simple observer)
-        const observer = new MutationObserver(() => {
-            const newLinks = document.querySelectorAll("a, button, input, textarea, [role='button']");
-            newLinks.forEach((link) => {
-                link.removeEventListener("mouseenter", handleLinkHover);
-                link.removeEventListener("mouseleave", handleLinkLeave);
-                link.addEventListener("mouseenter", handleLinkHover);
-                link.addEventListener("mouseleave", handleLinkLeave);
-            });
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
-
-        let timeout: NodeJS.Timeout;
-        const hideCursor = () => {
-            timeout = setTimeout(() => setIsVisible(false), 800);
-        };
-        window.addEventListener("mousemove", () => {
-            clearTimeout(timeout);
-            hideCursor();
-        });
+        document.body.addEventListener("mouseover", handleMouseOver, { passive: true });
+        document.body.addEventListener("mouseout", handleMouseOut, { passive: true });
 
         return () => {
             window.removeEventListener("mousemove", moveCursor);
             window.removeEventListener("mousedown", handleMouseDown);
             window.removeEventListener("mouseup", handleMouseUp);
-            observer.disconnect();
-            clearTimeout(timeout);
+            document.body.removeEventListener("mouseover", handleMouseOver);
+            document.body.removeEventListener("mouseout", handleMouseOut);
+            clearTimeout(hideTimeout);
         };
     }, [mouseX, mouseY]);
 

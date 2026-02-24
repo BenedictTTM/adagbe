@@ -14,7 +14,7 @@ const PRODUCTS = [
         id: "1",
         name: "Serafina Gown",
         price: "€2,400",
-        image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1983&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1618232468971-54188a224417?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmVhdXRpZnVsJTIwZHJlc3NlcyUyMGZvciUyMHNhbGV8ZW58MHx8MHx8fDA%3D",
         description: "A floor-length silk gown in deep midnight blue. Featuring a structured bodice and fluid drape, inspired by the night sky over the Savannah.",
         tag: "EVENING"
     },
@@ -22,7 +22,7 @@ const PRODUCTS = [
         id: "2",
         name: "Zaria Knit Dress",
         price: "€890",
-        image: "https://images.unsplash.com/photo-1663044023009-cfdb6dd6b89c?q=80&w=707&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "https://i.pinimg.com/1200x/83/71/a3/8371a3b8850af3323f41626605f9bf02.jpg",
         description: "Hand-woven cotton blend with intricate patterns. A modern interpretation of traditional weaving techniques, offering comfort and heritage.",
         tag: "DAYWEAR"
     },
@@ -30,7 +30,7 @@ const PRODUCTS = [
         id: "3",
         name: "Kente Structure",
         price: "€1,100",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1934&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1583333001978-8c57d752ce5b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZHJlc3NlcyUyMHdpdGhvdXQlMjBwb2VwbGV8ZW58MHx8MHx8fDA%3D",
         description: "Bold architectural dress utilizing Kente-inspired geometric patterns. A statement piece that bridges the gap between art and fashion.",
         tag: "CONCEPTUAL"
     },
@@ -38,7 +38,7 @@ const PRODUCTS = [
         id: "4",
         name: "Obsidian Silk",
         price: "€1,650",
-        image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1587&auto=format&fit=crop",
+        image: "https://s.yimg.com/ny/api/res/1.2/N_wQ.j7LX2fEB0THiQ3Ygg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD04Mjg7Y2Y9d2VicA--/https://media.zenfs.com/en/us_magazine_e_commerce_884/157dde7d65ba36bce9e5c21cea6256a2",
         description: "Pure black silk slip dress with asymmetric detailing. Minimalist luxury defined by the quality of the fabric and the precision of the cut.",
         tag: "EVENING"
     },
@@ -46,7 +46,7 @@ const PRODUCTS = [
         id: "5",
         name: "Terra Blazer Dress",
         price: "€1,800",
-        image: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?q=80&w=1887&auto=format&fit=crop",
+        image: "https://images.pexels.com/photos/10415856/pexels-photo-10415856.jpeg",
         description: "Earthy tones in a structured blazer dress silhouette. Sharp tailoring meets organic warmth.",
         tag: "TAILORING"
     },
@@ -54,7 +54,7 @@ const PRODUCTS = [
         id: "6",
         name: "Solaris Maxi",
         price: "€1,450",
-        image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=1946&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1649899240929-a19a0dcf02fb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZHJlc3NlcyUyMHdpdGhvdXQlMjBwb2VwbGV8ZW58MHx8MHx8fDA%3D",
         description: "Vibrant yellow maxi dress with voluminous sleeves. Capturing the energy of the sun and the joy of movement.",
         tag: "DAYWEAR"
     },
@@ -170,22 +170,22 @@ export default function CollectionPage() {
                             {
                                 title: "Evening",
                                 filter: "EVENING",
-                                image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1983&auto=format&fit=crop"
+                                image: "https://images.unsplash.com/photo-1618232468971-54188a224417?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmVhdXRpZnVsJTIwZHJlc3NlcyUyMGZvciUyMHNhbGV8ZW58MHx8MHx8fDA%3D"
                             },
                             {
                                 title: "Daywear",
                                 filter: "DAYWEAR",
-                                image: "https://images.unsplash.com/photo-1663044023009-cfdb6dd6b89c?q=80&w=707&auto=format&fit=crop"
+                                image: "https://i.pinimg.com/736x/17/58/2a/17582ae8a331fe4b4fc94ace4aa24fd7.jpg"
                             },
                             {
                                 title: "Tailoring",
                                 filter: "TAILORING",
-                                image: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?q=80&w=1887&auto=format&fit=crop"
+                                image: "https://images.pexels.com/photos/10415856/pexels-photo-10415856.jpeg"
                             },
                             {
                                 title: "Conceptual",
                                 filter: "CONCEPTUAL",
-                                image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1934&auto=format&fit=crop"
+                                image: "https://images.unsplash.com/photo-1583333001978-8c57d752ce5b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZHJlc3NlcyUyMHdpdGhvdXQlMjBwb2VwbGV8ZW58MHx8MHx8fDA%3D"
                             }
                         ].map((category, index) => (
                             <button

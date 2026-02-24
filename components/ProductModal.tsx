@@ -70,6 +70,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                                     src={product.image}
                                     alt={product.name}
                                     fill
+                                    sizes="(max-width: 768px) 100vw, 50vw"
                                     className="object-cover"
                                 />
                             </motion.div>

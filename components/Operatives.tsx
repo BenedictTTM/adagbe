@@ -84,6 +84,7 @@ export default function Operatives() {
                                 src={op.image}
                                 alt={op.name}
                                 fill
+                                sizes="300px"
                                 className="object-cover grayscale contrast-125"
                             />
                             {/* Overlay data on image */}

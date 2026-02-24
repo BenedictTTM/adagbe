@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,12 +11,18 @@ export default function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLHeadingElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
+    const [videoLoaded, setVideoLoaded] = useState(false);
 
     const { scrollY } = useScroll();
     const y = useTransform(scrollY, [0, 1000], [0, 400]);
     const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
     useEffect(() => {
+        // Defer video loading until after initial paint
+        const timer = setTimeout(() => {
+            setVideoLoaded(true);
+        }, 100);
+
         // Reveal animation
         const tl = gsap.timeline();
 
@@ -27,7 +33,6 @@ export default function Hero() {
         });
 
         if (textRef.current) {
-            // Split text animation effect (simulated with standard GSAP for now)
             tl.fromTo(
                 textRef.current,
                 { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)", y: 100 },
@@ -55,23 +60,29 @@ export default function Hero() {
                 y: 200,
             });
         }
+
+        return () => {
+            clearTimeout(timer);
+        };
     }, []);
 
     return (
         <section ref={containerRef} className="relative h-screen w-full overflow-hidden flex items-center justify-center opacity-0">
             {/* Raw/Organic Video Background */}
-            <div className="absolute inset-0 z-0">
-                <video
-                    ref={videoRef}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover opacity-50 grayscale contrast-125"
-                >
-                    {/* Abstract organic texture / dark fluid */}
-                    <source src="https://cdn.coverr.co/videos/coverr-abstract-black-shapes-4524/1080p.mp4" type="video/mp4" />
-                </video>
+            <div className="absolute inset-0 z-0 bg-black">
+                {videoLoaded && (
+                    <video
+                        ref={videoRef}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="none"
+                        className="w-full h-full object-cover opacity-50 grayscale contrast-125"
+                    >
+                        <source src="https://cdn.coverr.co/videos/coverr-abstract-black-shapes-4524/1080p.mp4" type="video/mp4" />
+                    </video>
+                )}
                 <div className="absolute inset-0 bg-black/30 mix-blend-multiply" />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
             </div>

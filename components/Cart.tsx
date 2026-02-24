@@ -49,6 +49,7 @@ export default function Cart() {
                                                 src={item.image}
                                                 alt={item.name}
                                                 fill
+                                                sizes="96px"
                                                 className="object-cover"
                                             />
                                         </div>

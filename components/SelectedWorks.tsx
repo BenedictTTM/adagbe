@@ -10,19 +10,19 @@ const works = [
         id: 1,
         title: "VOID WALKER",
         date: "FW 24",
-        img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1618232468971-54188a224417?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmVhdXRpZnVsJTIwZHJlc3NlcyUyMGZvciUyMHNhbGV8ZW58MHx8MHx8fDA%3D",
     },
     {
         id: 2,
         title: "ASHES TO ASHES",
         date: "SS 25",
-        img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop",
+        img: "https://i.pinimg.com/736x/17/58/2a/17582ae8a331fe4b4fc94ace4aa24fd7.jpg",
     },
     {
         id: 3,
         title: "CHROMATIC FLESH",
         date: "FW 25",
-        img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1583333001978-8c57d752ce5b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZHJlc3NlcyUyMHdpdGhvdXQlMjBwb2VwbGV8ZW58MHx8MHx8fDA%3D",
     },
 ];
 
@@ -65,6 +65,7 @@ function WorkItem({ work, index, scrollProgress }: { work: any; index: number; s
                     src={work.img}
                     alt={work.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0 grayscale opacity-80 group-hover:opacity-100"
                 />
 

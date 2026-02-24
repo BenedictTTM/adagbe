@@ -14,6 +14,7 @@
   --font-serif: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 
   --animate-reveal: reveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-marquee: marquee 20s linear infinite;
 
   @keyframes reveal {
     0% {
@@ -24,6 +25,15 @@
     100% {
       transform: translateY(0);
       opacity: 1;
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
     }
   }
 }
