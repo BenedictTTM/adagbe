@@ -93,10 +93,10 @@ export default function CollectionPage() {
     const getInsert = (idx: number) => chaosInserts.find(i => i.index === idx)?.content;
 
     return (
-        <main className="min-h-screen bg-background text-foreground pt-32 pb-20 px-4 md:px-12 selection:bg-accent selection:text-black">
+        <main className="min-h-screen bg-background text-foreground pt-2 pb-20 px-4 md:px-12 selection:bg-accent selection:text-black">
 
             {/* Terminal Header */}
-            <div className="mb-24 border-b border-border/40 pb-8 flex flex-col md:flex-row justify-between items-end gap-8 bg-background/80 backdrop-blur-sm md:sticky md:top-0 z-30 pt-8 mt-[-8rem]">
+            <div className="mb-4 border-b border-border/40 pb-1 flex flex-col md:flex-row justify-between items-end gap-1 bg-background/80 backdrop-blur-sm md:sticky md:top-0 z-30 pt-2 mt-0">
                 <div>
                     <span className="font-mono text-xs text-accent mb-2 block animate-pulse">&gt; COLLECTION_003_INIT</span>
                     <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter">
