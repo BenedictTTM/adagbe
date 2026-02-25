@@ -14,9 +14,3 @@ export default function SmoothScroll({
     </ReactLenis>
   );
 }
-
-export default function {
-<>
-<div>This is the <div/>
-</>
-}
