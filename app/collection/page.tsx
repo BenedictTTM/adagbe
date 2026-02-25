@@ -14,7 +14,7 @@ const PRODUCTS = [
         id: "1",
         name: "Serafina Gown",
         price: "€2,400",
-        image: "https://images.unsplash.com/photo-1618232468971-54188a224417?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmVhdXRpZnVsJTIwZHJlc3NlcyUyMGZvciUyMHNhbGV8ZW58MHx8MHx8fDA%3D",
+        image: "https://images.unsplash.com/photo-1542295669297-4d352b042bca?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         description: "A floor-length silk gown in deep midnight blue. Featuring a structured bodice and fluid drape, inspired by the night sky over the Savannah.",
         tag: "EVENING"
     },

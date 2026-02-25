@@ -1,5 +1,6 @@
 "use client";
 
+import { div } from "framer-motion/client";
 import { ReactLenis } from "lenis/react";
 
 export default function SmoothScroll({
@@ -12,4 +13,10 @@ export default function SmoothScroll({
       {children}
     </ReactLenis>
   );
+}
+
+export default function {
+<>
+<div>This is the <div/>
+</>
 }
